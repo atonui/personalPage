@@ -1,0 +1,178 @@
+<!--#9b59b6-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Kibet Koech</title>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="row" id="home">
+                    <img src="images/signature.png" alt="signature" class="logo">
+                    <ul class="main-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About me</a></li>
+                        <li><a href="blog.html" target="_blank">Blog</a></li>
+                    </ul>
+                
+                </div>
+            
+            </nav>
+            <div class="header-class">
+                <h1>Kibet Koech</h1>
+                <h2>Developer. Designer. Engineer.</h2>
+            </div>
+        
+        </header>
+        <section class="section-projects" id="about">
+            <div class="row">
+                <h2>What I Do</h2>
+                <p class="description">Tech I love, some maybe more than others...</p>
+            
+            </div>
+            
+            <div class="row">
+                <div class="col span-1-of-4 details-box">
+                    <ion-icon name="desktop" class="icon"></ion-icon>
+                    <h3>Front End</h3>
+                    <p class="project-description">HTML, CSS and Javascript. Picked React as my primary frontend framework.</p>
+                </div>
+            
+                <div class="col span-1-of-4 details-box">
+                    <ion-icon name="construct" class="icon"></ion-icon>
+                    <h3>Backend Development</h3>
+                    <p class="project-description">Node.js and python flask are my go to for the backend.</p>
+                </div>
+
+                <div class="col span-1-of-4 details-box">
+                    <ion-icon name="apps" class="icon"></ion-icon>
+                    <h3>Full stack developer!</h3>
+                    <p class="project-description">I want to master the building of scalable web apps as well as their architechture. I will master my craft.</p>
+                </div>
+                <div class="col span-1-of-4 details-box">
+                    <ion-icon name="information-circle-outline" class="icon"></ion-icon>
+                    <h3>Tech I'm curious about...</h3>
+                    <p class="project-description">IoT (Arduino, C++). Cloud (AWS). Machine Learning. Artificial Intelligence. Big Data.</p>
+                </div>
+            
+            </div>
+        </section>
+        <section class="section-challenge" id="about">
+            <h2>Challenge</h2>
+            <p class="description">I plan on learning all this stuff by doing projects. Loads of them. And documenting everything in my blog. <br>Now since I need a blog, this is very obviously my first project; build a blog engine! I'll do it by following <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world" target="_blank">this</a>.<br> I will also challenge myself to release a new project every month. Wish me luck.</p>
+            
+            <div class="row clock-section" id="clock">
+                <h3>Time to completion of next project</h3>
+                
+                <div class="col span-1-of-4">
+                    <div class="days time"></div>
+                    <div class="smalltext">Days</div>
+                </div>
+                <div class="col span-1-of-4">
+                    <div class="hours time"></div> 
+                    <div class="smalltext">Hours</div>
+                </div>
+                <div class="col span-1-of-4">
+                    <div class="minutes time"></div> 
+                    <div class="smalltext">Minutes</div>
+                </div>
+                <div class="col span-1-of-4">
+                    <div class="seconds time"></div>
+                    <div class="smalltext">Seconds</div>
+                </div>
+                
+            
+            </div>
+        
+        </section>
+        <footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About me</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-media">
+                        <li>
+                            <a href="https://twitter.com/TonuiK" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/atonui"><ion-icon name="logo-github"></ion-icon></a>
+                        </li>
+                    
+                    </ul>
+                
+                </div>
+            </div>
+            <div class="row">
+                <p>Copyright &copy 2019 Kibet Koech. All rights reserved.</p>
+            </div>
+        </footer>
+    
+    
+    </body>
+
+
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script>        
+        //Function to take time in string format and calculate the difference //between that time and current time
+        
+        function getRemainingTime(endTime){
+            var remainingTime = Date.parse(endTime) - Date.parse(new Date());
+            var seconds = Math.floor((remainingTime/1000)%60);
+            var minutes = Math.floor((remainingTime/1000/60)%60);
+            var hours = Math.floor((remainingTime/(1000*60*60))%24);
+            var days = Math.floor(remainingTime/(1000*60*60*24));
+            
+            return {
+                'total': remainingTime,
+                'days':days,
+                'hours':hours,
+                'minutes':minutes,
+                'seconds':seconds
+            };
+        }
+        
+        function intializeClock(id, endTime) {
+            
+            var clock = document.getElementById(id);
+            var daySpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+            
+            function updateClock(){
+                var time = getRemainingTime(endTime);
+                
+                daySpan.innerHTML = time.days;
+                hoursSpan.innerHTML = time.hours;
+                minutesSpan.innerHTML = time.minutes;
+                secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
+                
+                
+                if(time.total<=0){
+                    clearInterval(timeInterval);
+                }
+            }
+            
+            updateClock();
+            var timeInterval = setInterval(updateClock,1000);
+        }
+        
+        var deadline = new Date(Date.parse(new Date()) + 30 * 24 * 60 * 60 * 1000);
+        
+        intializeClock('clock',deadline);
+        
+        
+    
+    </script>
+</html>
